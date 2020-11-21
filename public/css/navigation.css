@@ -1,0 +1,13 @@
+.navbar-brand{
+   font-size: 2rem;
+   margin-bottom: 10px;
+}
+
+.navbar{
+   background-color: #2b4473;
+ 
+}
+
+.fixed-top{
+   position:sticky;
+}
