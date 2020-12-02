@@ -1,6 +1,6 @@
 <?php
 
-class ControllerHome{
+class ProductController{
     private $View;
     public $message;
     private $ProductManager;
@@ -8,7 +8,7 @@ class ControllerHome{
    public function __construct($url){
 
     //Si l'url dépasse le nombre de slash indiqué
-    if( isset($url) && count($url ) > 1 ){
+    if( isset($url) && count($url ) > 2 ){
        throw new Exception('Page introuvable');
     }
     
@@ -25,10 +25,10 @@ class ControllerHome{
 
 
       /*-------------VUE------------*/
-      $this->View = new View("ProductList");
+      $this->View = new View("ProductInfo");
       $this->View->Popup->setMessage($this->message);
       $this->View->generateView(array(
-         "productList" => $this->ProductManager->getProductList() 
+         "productInfo" => $this->ProductManager->getProduct($url[1]) 
       ));
       /*----------------------------*/
     }

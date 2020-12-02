@@ -1,6 +1,6 @@
 <?php
   
-class ControllerError{
+class ErrorController{
    private $View;
 
    public function __construct(Throwable $e, $buffer){

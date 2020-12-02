@@ -21,7 +21,7 @@ class AdminRouter extends Router{
           
          //LE CONTROLLEUR ETS INCLU SELON LACTION DE LE L'UTILISATEUR
             $controller = ucfirst(strtolower($this->url[0]));
-            $controllerClass = "ControllerAdmin".$controller;
+            $controllerClass = $controller."ControllerAdmin";
             $controllerFile = "controller/".$controllerClass.".php";
             var_dump($controllerFile);
             //Vérification si le fichier controleur existe
@@ -36,8 +36,8 @@ class AdminRouter extends Router{
       
          }
          else{
-            require_once('controller/ControllerAdminLogin.php');
-            $this->ctrl = new ControllerAdminLogin($this->url);
+            require_once('controller/AdminLoginController.php');
+            $this->ctrl = new AdminLoginController($this->url);
          }
       }
       catch(Throwable $e){

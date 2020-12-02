@@ -24,7 +24,7 @@ class Router{
          if( count($this->url) >= 1){
          //LE CONTROLLEUR ETS INCLU SELON LACTION DE LE L'UTILISATEUR
             $controller = ucfirst(strtolower($this->url[0]));
-            $controllerClass = "Controller".$controller;
+            $controllerClass = $controller."Controller";
             $controllerFile = "controller/".$controllerClass.".php";
             
             //Vérification si le fichier controleur existe
@@ -40,9 +40,8 @@ class Router{
          }
          else{
            
-            require_once('controller/ControllerHome.php');
-           
-            $this->ctrl = new ControllerHome($this->url);
+            require_once('controller/HomeController.php');
+            $this->ctrl = new HomeController($this->url);
            
          }
       }

@@ -1,6 +1,6 @@
 <?php 
 
-class ControllerAdminProduct{
+class AdminProductController{
    private $View;
    public $message;
    private $ProductManager;

@@ -2,7 +2,7 @@
 
 
 
-class ControllerAdminLogin{
+class AdminLoginController{
    private $View;
    public $message;
 
