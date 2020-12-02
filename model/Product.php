@@ -12,22 +12,22 @@ class Product{
 
     //Hydratation
     public function hydratation(array $data){
-        foreach($data as $key => $attribut){
-           $setter = 'set'.ucfirst($key);
+        foreach($data as $prop => $value){
+           $setter = 'set'.ucfirst($prop);
+
+           //Si un setter (non magic) existe
            if(method_exists($this, $setter)){
-              $this->$setter(htmlspecialchars($attribut)); //Appel au setter concerné en sécurisant l'injection de scripts
+              $this->$setter(htmlspecialchars($value)); //Appel au setter concerné en sécurisant l'injection de scripts
            }
+            //Si l'attribut existe
+           else if(property_exists($this, $prop)) { $this->$prop = $value; }
         }
      }
 
-    //Getter
-      public function    id(){    return $this->id; }
-      public function    name(){  return $this->name; }
-      public function    description(){ return $this->description; }
+   //Getter
+   public function __get($att){ return $this->$att;}
 
-    //Setter
-      public function    setId($value){     $this->id = $value; }
-      public function    setName($value){   $this->name = $value; }
-      public function    setDescription($value){  $this->description = $value; }
+   //Setter
+   public function __set( $att , $val ){ $this->$att = $val;}
 }
  

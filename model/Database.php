@@ -30,7 +30,7 @@ abstract class Database{
       $type   = $config['DB_SGBD'];
 
       
-      self::$cnx = new PDO("$type:host=$host;dbname=$db", $user, $pwd);
+      self::$cnx = new PDO("$type:host=$host;dbname=$db;charset=utf8mb4", $user, $pwd);
       self::$cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
    }
 

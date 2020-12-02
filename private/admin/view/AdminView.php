@@ -11,7 +11,7 @@ class AdminView extends View{
         $this->file= 'view/'.lcfirst($page).'AdminView.php';
         $this->template= "view/adminTemplate.php" ;
         $this->title= $page;
-        $this->cssList= ["public/css/".strtolower($page).".css"] ;
+        $this->cssList= ["public/css/admin/".strtolower($page)."Admin.css"] ;
         $this->nav= "view/adminNavigation.php";
         $this->scriptList= array() ;
         $this->Popup = new Popup;

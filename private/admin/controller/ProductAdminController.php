@@ -18,8 +18,9 @@ class ProductAdminController{
          /*---------MANAGER---------*/
          $this->ProductManager= new ProductManager();
 
-         DataBase::setConfigPath("../config.ini");
-         DataBase::setLoginPath("../admin_login.ini");
+         //Changement des path pour le BDD
+         Database::setConfigPath("../config.ini");
+         Database::setLoginPath("../admin_login.ini");
          /*------------------*/
 
 
