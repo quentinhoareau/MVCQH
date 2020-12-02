@@ -17,9 +17,11 @@ class ProductAdminController{
         
          /*---------MANAGER---------*/
          $this->ProductManager= new ProductManager();
+
          DataBase::setConfigPath("../config.ini");
          DataBase::setLoginPath("../admin_login.ini");
          /*------------------*/
+
 
       
          /*---------FORMULAIRE---------*/

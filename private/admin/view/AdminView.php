@@ -8,7 +8,7 @@ class AdminView extends View{
       //Construction de la view
      public function __construct($page){
         //Initialisation par défaut
-        $this->file= 'view/'.strtolower($page).'AdminView.php';
+        $this->file= 'view/'.lcfirst($page).'AdminView.php';
         $this->template= "view/adminTemplate.php" ;
         $this->title= $page;
         $this->cssList= ["public/css/".strtolower($page).".css"] ;

@@ -16,7 +16,7 @@ class View{
     
     //Construction de la vue
    public function __construct($page){
-      $this->file= 'view/'.strtolower($page).'View.php';
+      $this->file= 'view/'.lcfirst($page).'View.php';
       $this->template= "view/template.php" ;
       $this->title= $page;
       $this->cssList= ["public/css/".strtolower($page).".css"];
