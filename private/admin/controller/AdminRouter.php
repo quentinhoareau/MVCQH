@@ -43,7 +43,7 @@ class AdminRouter extends Router{
       catch(Throwable $e){
 
          //Affichage de la view d'erreur en cas de problème liée au site / serveur
-         $this->view = new ViewAdmin('Error');
+         $this->view = new AdminView('Error');
          $this->view->setCssList(["public/css/erreur.css"]) ;
          $this->view->setHeader("view/header.php") ;
          $this->view->generateView( array("errorTitle" => "Erreur",'errorMessage' => $e->getMessage()) );

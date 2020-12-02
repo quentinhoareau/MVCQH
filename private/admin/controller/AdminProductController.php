@@ -49,7 +49,7 @@ class AdminProductController{
             );
          }
 
-         $this->View = new ViewAdmin($viewName) ;
+         $this->View = new AdminView($viewName) ;
          $this->View->Popup->setMessage($this->message);
          $this->View->genererView($data) ;
          /*------------------*/

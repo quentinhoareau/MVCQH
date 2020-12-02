@@ -13,7 +13,7 @@ define('ACTIVE_LINK',  $activeLink) ;
 define('ADMIN_SERVER_FOLDER',  $serverFolder) ;
 
 
-require_once('view/ViewAdmin.php');
+require_once('view/AdminView.php');
 require_once('controller/AdminRouter.php');
 
    //Récupération de chaque partie de l'url 

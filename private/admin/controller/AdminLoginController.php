@@ -20,7 +20,7 @@ class AdminLoginController{
          /*----------------------------*/
 
          /*---------View---------*/
-         $this->View = new ViewAdmin('Login') ;
+         $this->View = new AdminView('Login') ;
          $this->View->Popup->setMessage($this->message);
          $this->View->generateView( array() ) ;
          /*---------------------*/

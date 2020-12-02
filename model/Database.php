@@ -4,7 +4,16 @@ abstract class Database{
    private static $cnx;
 
    private static function setBdd(){
-      self::$cnx = new PDO('mysql:host=localhost;dbname=mvcqh', 'root', 'root');
+      $config = parse_ini_file("private/config.ini");
+
+      $user  = $config['DB_USER'];
+      $pwd = $config['DB_PASSWORD'];
+      $db   = $config['DB_NAME'];
+      $host   = $config['DB_SERVEUR'];
+      $type   = $config['DB_SGBD'];
+
+      
+      self::$cnx = new PDO("$type:host=$host;dbname=$db", $user, $pwd);
       self::$cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
    }
 

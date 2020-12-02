@@ -48,8 +48,8 @@ class Router{
       catch(Throwable $e){
       
       $buffer = ob_get_clean();
-      require_once('controller/ControllerError.php');
-      $this->ctrl = new ControllerError($e, $buffer);
+      require_once('controller/ErrorController.php');
+      $this->ctrl = new ErrorController($e, $buffer);
 
       }
 

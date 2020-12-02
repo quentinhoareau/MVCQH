@@ -3,12 +3,12 @@
 require_once('../../view/Popup.php');
 require_once('../../view/View.php');
 
-class ViewAdmin extends View{
+class AdminView extends View{
       
       //Construction de la view
      public function __construct($page){
         //Initialisation par défaut
-        $this->file= 'view/viewAdmin'.ucfirst($page).'.php';
+        $this->file= 'view/'.strtolower($page).'AdminView.php';
         $this->template= "view/adminTemplate.php" ;
         $this->title= $page;
         $this->cssList= ["public/css/".strtolower($page).".css"] ;
