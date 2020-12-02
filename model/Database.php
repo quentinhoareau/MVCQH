@@ -2,12 +2,29 @@
 
 abstract class Database{
    private static $cnx;
+   private static $loginPath;
+   private static $configPath;
+
+   public function __construct(){
+      self::$loginPath = "private/admin_login.ini";
+      self::$configPath = "private/config.ini";
+   }
+
+   public static function setLoginPath($value){
+      self::$loginPath = $value;
+   }
+
+   public static function setConfigPath($value){
+      self::$configPath = $value;
+   }
 
    private static function setBdd(){
-      $config = parse_ini_file("private/config.ini");
 
-      $user  = $config['DB_USER'];
-      $pwd = $config['DB_PASSWORD'];
+      $loginInfo = parse_ini_file(self::$loginPath);
+      $user = $loginInfo["DB_USER"];
+      $pwd =  $loginInfo["DB_PWD"];
+
+      $config = parse_ini_file(self::$configPath);
       $db   = $config['DB_NAME'];
       $host   = $config['DB_SERVEUR'];
       $type   = $config['DB_SGBD'];

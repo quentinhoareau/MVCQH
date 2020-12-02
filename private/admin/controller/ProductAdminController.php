@@ -1,21 +1,24 @@
 <?php 
 
-class AdminProductController{
+class ProductAdminController{
    private $View;
    public $message;
    private $ProductManager;
    
    // CONSTRUCTEUR 
    public function __construct($url){
-  
+      
       if( isset($url) && count($url) > 3 ){
       
          throw new Exception(null, 404); //Erreur 404
+
       }
       else{
-
+        
          /*---------MANAGER---------*/
          $this->ProductManager= new ProductManager();
+         DataBase::setConfigPath("../config.ini");
+         DataBase::setLoginPath("../admin_login.ini");
          /*------------------*/
 
       
@@ -33,7 +36,7 @@ class AdminProductController{
      
          /*---------View---------*/
          //Info d'un produit
-         if(isset($url[2])) { x
+         if(isset($url[2])) {
             $idContact=$url[2];
             $viewName= "ProductInfo";
             $data= array(
@@ -51,7 +54,7 @@ class AdminProductController{
 
          $this->View = new AdminView($viewName) ;
          $this->View->Popup->setMessage($this->message);
-         $this->View->genererView($data) ;
+         $this->View->generateView($data) ;
          /*------------------*/
       }
    }

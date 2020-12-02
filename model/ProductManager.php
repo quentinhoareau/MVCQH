@@ -2,7 +2,7 @@
 
 
 class ProductManager extends Database{
-   
+
     //Obtenir une liste d'objets products
     public function getProductList(){
         $this->getDB(); 
