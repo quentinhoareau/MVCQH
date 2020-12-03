@@ -35,7 +35,7 @@ class ProductAdminController{
             $this->ProductManager->add($_POST["addProduct"]);
          }
          if( isset($_POST["updateProduct"]) ){ //Si formulaire modifié
-            $this->ProductManager->update($_POST["editProduct"]);
+            $this->ProductManager->update($_POST["updateProduct"]);
          }
          /*------------------*/
      
@@ -45,18 +45,18 @@ class ProductAdminController{
             $idContact=$url[2];
             $viewName= "ProductUpdate";
             $data= array(
-               "product" => $this->ProductManager->getProduct($idContact) //Obtenir un produit
+               "product" => $this->ProductManager->get($idContact) //Obtenir un produit
             );
          }
          //Liste des produits
          else{
             $viewName= "ProductList";
             $data= array(
-               "productList" => $this->ProductManager->getProductList(), //Obtenir la liste des produits
+               "productList" => $this->ProductManager->getList(), //Obtenir la liste des produits
             );
          }
 
-         $data["categoryList"] = $this->CategoryManager->getCategoryList();
+         $data["categoryList"] = $this->CategoryManager->getList();
 
          $this->View = new AdminView($viewName) ;
          $this->View->Popup->setMessage($this->message);

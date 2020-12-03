@@ -31,28 +31,17 @@ class CategoryAdminController{
             $this->CategoryManager->add($_POST["addCategory"]);
          }
          if( isset($_POST["updateCategory"]) ){ //Si formulaire modifié
-            $this->CategoryManager->update($_POST["editCategory"]);
+            $this->CategoryManager->update($_POST["updateCategory"], $_POST["label"]);
          }
          /*------------------*/
      
          /*---------View---------*/
-         //Info d'un produit
-         if(isset($url[2])) {
-            $idContact=$url[2];
-            $viewName= "CategoryUpdate";
-            $data= array(
-               "category" => $this->CategoryManager->getCategory($idContact) //Obtenir un produit
-            );
-         }
          //Liste des produits
-         else{
-            $viewName= "CategoryList";
-            $data= array(
-               "categoryList" => $this->CategoryManager->getCategoryList(), //Obtenir la liste des produits
-            );
-         }
-
-         $data["categoryList"] = $this->CategoryManager->getCategoryList();
+   
+         $viewName= "Category";
+         $data= array(
+            "categoryList" => $this->CategoryManager->getList(), //Obtenir la liste des produits
+         );
 
          $this->View = new AdminView($viewName);
          $this->View->Popup->setMessage($this->message);

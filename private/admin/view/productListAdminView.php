@@ -11,7 +11,7 @@
             <td> <?= $product->id; ?> </td> 
             <td> <?= $product->name; ?> </td>
             <td> <?= $product->description; ?> </td> 
-            <td> <?= $product->getCategory()->label; ?> </td> 
+            <td> <?= $product->get()->label; ?> </td> 
             <td> 
                 <form action="" method="POST" class="form-inline"> 
                     <button class="form-control btn-info" type="button" name="consult" value="<?= $product->id; ?>"><a href="../../product/<?= $product->id; ?>"> <i class="fa fa-eye"></i> </a> </button> 

@@ -28,7 +28,7 @@ class ProductController{
       $this->View = new View("ProductInfo");
       $this->View->Popup->setMessage($this->message);
       $this->View->generateView(array(
-         "productInfo" => $this->ProductManager->getProduct($url[1]) 
+         "productInfo" => $this->ProductManager->get($url[1]) 
       ));
       /*----------------------------*/
     }

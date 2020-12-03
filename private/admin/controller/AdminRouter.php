@@ -15,9 +15,7 @@ class AdminRouter extends Router{
       try{
          //Auto chargement des modèles
          spl_autoload_register(function($class){
-        
             require_once($this->modelDirectory.'/'.$class.'.php');
-           
          });
 
         
@@ -33,7 +31,7 @@ class AdminRouter extends Router{
 
             //Vérification si le fichier controleur existe
             if( file_exists($controllerFile) ){
-               require_once("controller/ProductAdminController.php");
+               require_once($controllerFile);
                $this->ctrl = new $controllerClass($this->url); //Intenciation de la classe controleur concerné
             }
             else{

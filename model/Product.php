@@ -32,9 +32,9 @@ class Product{
    public function __set( $att , $val ){ $this->$att = $val;}
 
    //Autre méthodes
-   public function getCategory(){
+   public function get(){
       $CategoryManager = new CategoryManager;
-      return $CategoryManager->getCategory($this->categ_code);
+      return $CategoryManager->get($this->categ_code);
    }
 }
  
