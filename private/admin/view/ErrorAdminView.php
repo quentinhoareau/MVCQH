@@ -1,1 +1,1 @@
-Page introuvable
+Page admin introuvable

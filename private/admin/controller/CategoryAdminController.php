@@ -1,25 +1,21 @@
 <?php 
 
-class ProductAdminController{
+class CategoryAdminController{
    private $View;
    public $message;
-   private $ProductManager;
    private $CategoryManager;
    
    // CONSTRUCTEUR 
    public function __construct($url){
       
       if( isset($url) && count($url) > 3 ){
-      
          throw new Exception(null, 404); //Erreur 404
-
       }
       else{
         
          /*---------MANAGER---------*/
-         $this->ProductManager= new ProductManager();
          $this->CategoryManager= new CategoryManager();
-
+         
          //Changement des path pour le BDD
          Database::setConfigPath("../config.ini");
          Database::setLoginPath("../admin_login.ini");
@@ -28,14 +24,14 @@ class ProductAdminController{
 
       
          /*---------FORMULAIRE---------*/
-         if( isset($_POST["deleteProduct"]) ){ //Si formulaire supprimé
-            $this->ProductManager->delete($_POST["deleteProduct"]);
+         if( isset($_POST["deleteCategory"]) ){ //Si formulaire supprimé
+            $this->CategoryManager->delete($_POST["deleteCategory"]);
          }
-         if( isset($_POST["addProduct"]) ){ //Si formulaire ajouté
-            $this->ProductManager->add($_POST["addProduct"]);
+         if( isset($_POST["addCategory"]) ){ //Si formulaire ajouté
+            $this->CategoryManager->add($_POST["addCategory"]);
          }
-         if( isset($_POST["updateProduct"]) ){ //Si formulaire modifié
-            $this->ProductManager->update($_POST["editProduct"]);
+         if( isset($_POST["updateCategory"]) ){ //Si formulaire modifié
+            $this->CategoryManager->update($_POST["editCategory"]);
          }
          /*------------------*/
      
@@ -43,22 +39,22 @@ class ProductAdminController{
          //Info d'un produit
          if(isset($url[2])) {
             $idContact=$url[2];
-            $viewName= "ProductUpdate";
+            $viewName= "CategoryUpdate";
             $data= array(
-               "product" => $this->ProductManager->getProduct($idContact) //Obtenir un produit
+               "category" => $this->CategoryManager->getCategory($idContact) //Obtenir un produit
             );
          }
          //Liste des produits
          else{
-            $viewName= "ProductList";
+            $viewName= "CategoryList";
             $data= array(
-               "productList" => $this->ProductManager->getProductList(), //Obtenir la liste des produits
+               "categoryList" => $this->CategoryManager->getCategoryList(), //Obtenir la liste des produits
             );
          }
 
          $data["categoryList"] = $this->CategoryManager->getCategoryList();
 
-         $this->View = new AdminView($viewName) ;
+         $this->View = new AdminView($viewName);
          $this->View->Popup->setMessage($this->message);
          $this->View->generateView($data) ;
          /*------------------*/

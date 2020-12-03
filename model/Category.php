@@ -1,10 +1,8 @@
 <?php 
-class Product{
+class Category{
     //Attributs
-    private $id;
-    private $name;
-    private $description;
-    private $categ_code;
+    private $code;
+    private $label;
 
     //Constructeur
     public function __construct(array $data){
@@ -15,7 +13,7 @@ class Product{
     public function hydratation(array $data){
         foreach($data as $prop => $value){
            $setter = 'set'.ucfirst($prop);
-
+           
            //Si un setter (non magic) existe
            if(method_exists($this, $setter)){
               $this->$setter(htmlspecialchars($value)); //Appel au setter concerné en sécurisant l'injection de scripts
@@ -30,11 +28,5 @@ class Product{
 
    //Setter
    public function __set( $att , $val ){ $this->$att = $val;}
-
-   //Autre méthodes
-   public function getCategory(){
-      $CategoryManager = new CategoryManager;
-      return $CategoryManager->getCategory($this->categ_code);
-   }
 }
  

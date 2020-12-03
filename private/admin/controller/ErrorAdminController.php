@@ -9,7 +9,7 @@ class ErrorAdminController{
          //SQL STATE 45000 (Exception custom)
          case 45000:
             $errorMessage = $e->xdebug_message;
-            $errorTitle = "<b> SQL STATE Exception : </b> <br>" ;
+            $errorTitle = "<b> SQL STATE Exception: </b> <br>" ;
             break;
 
          //Accès refusé (global)
@@ -61,7 +61,7 @@ class ErrorAdminController{
       }
    
       //Affichage de la view d'erreur en cas de problème liée au site / serveur
-      $this->View = new View('Error');
+      $this->View = new AdminView('Error');
       $this->View->setCssList(["public/css/erreur.css"]) ;
       $this->View->setHeader("view/header.php") ;
       $this->View->generateView( array("errorTitle" => $errorTitle,'errorMessage' => $errorMessage) );

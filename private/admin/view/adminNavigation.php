@@ -9,7 +9,7 @@
       </ul>
         <ul class="sidebar-nav" id="sidebar">     
           <li><a href="product"> <span> Gérer les produits </span>  <i class="fa fa-adjust"></i>  </a> </li>
-          <li><a href="">link2 <i class="fa fa-adjust"></i></a></li>
+          <li><a href="category"> <span> Gérer les catégories </span>  <i class="fa fa-adjust"></i>  </a> </li>
         </ul>
       </div>
           

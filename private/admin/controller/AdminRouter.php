@@ -33,10 +33,8 @@ class AdminRouter extends Router{
 
             //Vérification si le fichier controleur existe
             if( file_exists($controllerFile) ){
-             
                require_once("controller/ProductAdminController.php");
                $this->ctrl = new $controllerClass($this->url); //Intenciation de la classe controleur concerné
-
             }
             else{
               
@@ -50,11 +48,9 @@ class AdminRouter extends Router{
          }
       }
       catch(Throwable $e){
-
          $buffer = ob_get_clean();
          require_once('controller/ErrorAdminController.php');
          $this->ctrl = new ErrorAdminController($e, $buffer);
-
       }
 
 
