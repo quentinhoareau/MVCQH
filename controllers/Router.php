@@ -6,7 +6,7 @@ class Router{
    protected $modelDirectory;
    protected array $url;
 
-   public function __construct($url, $modelDirectory = "model"){
+   public function __construct($url, $modelDirectory = "models"){
       $this->url = $url ;
       $this->modelDirectory = $modelDirectory ;
    }
@@ -25,7 +25,7 @@ class Router{
          //LE CONTROLLEUR ETS INCLU SELON LACTION DE LE L'UTILISATEUR
             $controller = ucfirst(strtolower($this->url[0]));
             $controllerClass = $controller."Controller";
-            $controllerFile = "controller/".$controllerClass.".php";
+            $controllerFile = "controllers/".$controllerClass.".php";
             
             //Vérification si le fichier controleur existe
             if( file_exists($controllerFile) ){
@@ -40,7 +40,7 @@ class Router{
          }
          else{
            
-            require_once('controller/HomeController.php');
+            require_once('controllers/HomeController.php');
             $this->ctrl = new HomeController($this->url);
            
          }
@@ -48,7 +48,7 @@ class Router{
       catch(Throwable $e){
       
       $buffer = ob_get_clean();
-      require_once('controller/ErrorController.php');
+      require_once('controllers/ErrorController.php');
       $this->ctrl = new ErrorController($e, $buffer);
 
       }

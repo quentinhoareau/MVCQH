@@ -16,15 +16,15 @@ class View{
     
     //Construction de la vue
    public function __construct($page){
-      $this->file= 'view/'.lcfirst($page).'View.php';
-      $this->template= "view/template.php" ;
+      $this->file= 'views/'.lcfirst($page).'View.php';
+      $this->template= "views/template.php" ;
       $this->title= $page;
-      $this->cssList= ["public/css/".strtolower($page).".css"];
+      $this->cssList= ["assets/css/".strtolower($page).".css"];
       $this->scriptList= [];
-      $this->nav= "view/navigation.php";
-      $this->footer = "view/footer.php";
-      $this->header = "view/header.php";
-      $this->nav = "view/navigation.php";
+      $this->nav= "views/navigation.php";
+      $this->footer = "views/footer.php";
+      $this->header = "views/header.php";
+      $this->nav = "views/navigation.php";
       $this->Popup = new Popup;
     }
 

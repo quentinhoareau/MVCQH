@@ -20,7 +20,7 @@ class Popup{
 
    public function genererVue(){
 
-      include "view/viewModal.php";
+      include "views/viewModal.php";
 
       if( $this->Message != null ){
          echo "<script> popup(\"".$this->title."\",\"".str_replace("\n", "", $this->Message)."\", false); </script>";

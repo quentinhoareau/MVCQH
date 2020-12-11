@@ -15,8 +15,8 @@ define('ACTIVE_LINK',  $activeLink) ;
 define('ADMIN_SERVER_FOLDER',  $serverFolder) ;
 
 
-require_once('view/AdminView.php');
-require_once('controller/AdminRouter.php');
+require_once('views/AdminView.php');
+require_once('controllers/AdminRouter.php');
 
    //Récupération de chaque partie de l'url 
    if( isset($_GET["url"]) ){

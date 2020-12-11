@@ -1,13 +1,13 @@
 <?php 
 
-require_once('../../controller/Router.php');
+require_once('../../controllers/Router.php');
 
 
 
 class AdminRouter extends Router{
 
    public function __construct($url){
-      parent::__construct($url, "../../model") ;
+      parent::__construct($url, "../../models") ;
    }
 
    public function routePage(){
@@ -26,7 +26,7 @@ class AdminRouter extends Router{
             $controller = ucfirst(strtolower($this->url[0]));
             $controllerClass = $controller."AdminController";
             
-            $controllerFile = "controller/".$controllerClass.".php";
+            $controllerFile = "controllers/".$controllerClass.".php";
             
 
             //Vérification si le fichier controleur existe
@@ -41,13 +41,13 @@ class AdminRouter extends Router{
       
          }
          else{
-            require_once('controller/LoginAdminController.php');
+            require_once('controllers/LoginAdminController.php');
             $this->ctrl = new LoginAdminController($this->url);
          }
       }
       catch(Throwable $e){
          $buffer = ob_get_clean();
-         require_once('controller/ErrorAdminController.php');
+         require_once('controllers/ErrorAdminController.php');
          $this->ctrl = new ErrorAdminController($e, $buffer);
       }
 

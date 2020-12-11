@@ -1,18 +1,18 @@
 <?php 
 
-require_once('../../view/Popup.php');
-require_once('../../view/View.php');
+require_once('../../views/Popup.php');
+require_once('../../views/View.php');
 
 class AdminView extends View{
       
       //Construction de la view
      public function __construct($page){
         //Initialisation par défaut
-        $this->file= 'view/'.lcfirst($page).'AdminView.php';
-        $this->template= "view/adminTemplate.php" ;
+        $this->file= 'views/'.lcfirst($page).'AdminView.php';
+        $this->template= "views/adminTemplate.php" ;
         $this->title= $page;
-        $this->cssList= ["public/css/admin/".strtolower($page)."Admin.css"] ;
-        $this->nav= "view/adminNavigation.php";
+        $this->cssList= ["assets/css/admin/".strtolower($page)."Admin.css"] ;
+        $this->nav= "views/adminNavigation.php";
         $this->scriptList= array() ;
         $this->Popup = new Popup;
       }

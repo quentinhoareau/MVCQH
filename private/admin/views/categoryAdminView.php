@@ -40,7 +40,7 @@ $(document).ready(function(){
          dom:'ftpl',
          order: [[ 0, "asc" ]], //Order des dates en premier
          language:{
-               url:"public/Datatable/french.json" //
+               url:"assets/Datatable/french.json" //
          }
       })
    });

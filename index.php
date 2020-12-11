@@ -12,9 +12,9 @@ $activeLink = str_replace($serverFolder,"",$_SERVER['REQUEST_URI']) ;
 define('ACTIVE_LINK',  $activeLink) ;
 define('SERVER_FOLDER',  $serverFolder) ;
 
-require_once('view/Popup.php');
-require_once('view/View.php');
-require_once('controller/Router.php');
+require_once('views/Popup.php');
+require_once('views/View.php');
+require_once('controllers/Router.php');
 
    //Récupération de chaque partie de l'url 
    if( isset($_GET["url"]) ){
