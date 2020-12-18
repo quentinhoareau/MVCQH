@@ -39,7 +39,7 @@ class Router{
       
          }
          else{
-           
+            
             require_once('controllers/HomeController.php');
             $this->ctrl = new HomeController($this->url);
            
@@ -47,9 +47,9 @@ class Router{
       }
       catch(Throwable $e){
       
-      $buffer = ob_get_clean();
-      require_once('controllers/ErrorController.php');
-      $this->ctrl = new ErrorController($e, $buffer);
+         $buffer = ob_get_clean();
+         require_once('controllers/ErrorController.php');
+         $this->ctrl = new ErrorController($e, $buffer);
 
       }
 
