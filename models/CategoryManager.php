@@ -32,10 +32,15 @@ class CategoryManager extends Database{
     }
 
     //Insertion d'une Category
-    public function insert($label){
+    public function add($label){
         $this->getDB(); 
         $query = "INSERT INTO category(label) VALUES (?)";
         $this->execQuery($query, [$label]);
+
+        //Retourne l'identifiant de l'entité créée
+        $this->getDB();
+        return $this->getMaxIdTable("category", "code");
+
     }
 
 

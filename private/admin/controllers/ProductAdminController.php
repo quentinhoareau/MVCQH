@@ -1,73 +1,78 @@
 <?php 
 
 class ProductAdminController{
-   private $View;
-   public $message;
-   private $ProductManager;
-   private $CategoryManager;
+   private  $View;
+   public   $message;
+   private  $ProductManager;
+   private  $CategoryManager;
    
    // CONSTRUCTEUR 
    public function __construct($url){
       
       if( isset($url) && count($url) > 3 ){
-      
          throw new Exception(null, 404); //Erreur 404
-
       }
       else{
         
          /*---------MANAGER---------*/
          $this->ProductManager= new ProductManager();
          $this->CategoryManager= new CategoryManager();
-
+         
          //Changement des path pour le BDD
          Database::setConfigPath("../config.ini");
          Database::setLoginPath("../admin_login.ini");
          /*------------------*/
 
-
       
          /*---------FORMULAIRE---------*/
-         if( isset($_POST["deleteProduct"]) ){ //Si formulaire supprimé
+         //Action Supprimer
+         if( isset($_POST["deleteProduct"]) ){ 
             $this->ProductManager->delete($_POST["deleteProduct"]);
+            header("Location: ".ADMIN_HOME."Product");
          }
-         if( isset($_POST["addProduct"]) ){ //Si formulaire ajouté
-            $this->ProductManager->add($_POST["addProduct"]);
+         //Action Ajouter
+         if( isset($_POST["addProduct"]) ){ 
+            $idNewProduct = $this->ProductManager->add($_POST['name'], $_POST['description'], $_POST['categ_code']);
+            header("Location: ".ADMIN_HOME."product/update/".$idNewProduct);
          }
-         if( isset($_POST["updateProduct"]) ){ //Si formulaire modifié
-            $this->ProductManager->update($_POST["updateProduct"]);
+         //Action modifier
+         if( isset($_POST["updateProduct"]) ){
+            $idProduct = $_POST["updateProduct"];
+            $this->ProductManager->update($idProduct, $_POST['name'], $_POST['description'], $_POST['categ_code']);
          }
          /*------------------*/
      
          /*---------View---------*/
-         //Info d'un produit
-         if(isset($url[2])) {
-            $idContact=$url[2];
-            $viewName= "ProductUpdate";
+         //Vue Modifier
+         if( isset($url[1]) && $url[1] == "update"  && $url[2] >= 1 ){
+            $viewName= "ProductForm";
             $data= array(
-               "product" => $this->ProductManager->get($idContact) //Obtenir un produit
+               "Product" => $this->ProductManager->get($url[2]), //Obtenir la liste des produits
+               "CategoryList" => $this->CategoryManager->getList()
             );
          }
-         //Liste des produits
+         //Vue Ajouter
+         else if( isset($url[1]) && $url[1] == "add"){
+            $viewName= "ProductForm";
+            $data= array(
+               "CategoryList" => $this->CategoryManager->getList()
+            );
+         }
+         //Vue Listing
          else{
             $viewName= "ProductList";
             $data= array(
-               "productList" => $this->ProductManager->getList(), //Obtenir la liste des produits
+               "ProductList" => $this->ProductManager->getList(), //Obtenir la liste des produits
             );
          }
+        
 
-         $data["categoryList"] = $this->CategoryManager->getList();
-
-         $this->View = new AdminView($viewName) ;
+         $this->View = new AdminView($viewName);
          $this->View->Popup->setMessage($this->message);
          $this->View->generateView($data) ;
          /*------------------*/
       }
    }
-
-   
-
-
    
 
 }

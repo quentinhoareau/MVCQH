@@ -80,6 +80,18 @@ abstract class Database extends Website{
 
    }
 
+    //Obtention de l'ID max de la table concernée
+    protected function getMaxIdTable($table, $pk){
+      $var = [];
+         $req = self::$cnx->prepare("SELECT max($pk) as 'newId' FROM $table");
+         $req->execute();
+         $resultat = $req->fetchAll(PDO::FETCH_ASSOC)[0]["newId"];
+      if( empty($resultat) ){ $resultat = 1 ; }
+      return $resultat;
+      $req->closeCursor();
+   }
+
+
 
 
 }

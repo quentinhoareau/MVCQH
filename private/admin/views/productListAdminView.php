@@ -6,23 +6,20 @@
             <th>Id </th> <th>Nom </th>  <th>Decsription</th> <th>Catégorie</th> <th>Action</th>
         </thead>
         <?php
-            foreach ($productList as $product){ ?>
+            foreach ($ProductList as $Product){ ?>
         <tr> 
-            <td> <?= $product->id; ?> </td> 
-            <td> <?= $product->name; ?> </td>
-            <td> <?= $product->description; ?> </td> 
-            <td> <?= $product->get()->label; ?> </td> 
+            <td> <?= $Product->id; ?> </td> 
+            <td> <?= $Product->name; ?> </td>
+            <td> <?= $Product->description; ?> </td> 
+            <td> <?= $Product->get()->label; ?> </td> 
             <td> 
                 <form action="" method="POST" class="form-inline"> 
-                    <button class="form-control btn-info" type="button" name="consult" value="<?= $product->id; ?>"><a href="../../product/<?= $product->id; ?>"> <i class="fa fa-eye"></i> </a> </button> 
-                    <button class="form-control btn-primary" type="button" name="update" value="<?= $product->id; ?>"><i class="fa fa-pencil"></i></button> 
-                    <button class="form-control btn-danger" type="submit" name="delete" value="<?= $product->id; ?>"><i class="fa fa-trash"></i></button> 
+                    <a href="../../product/<?= $Product->id; ?>"> <button class="form-control btn-info" type="button" name="consult" value="<?= $Product->id; ?>"> <i class="fa fa-eye"></i>  </button> </a>
+                    <a href="product/update/<?= $Product->id; ?>">  <button class="form-control btn-primary" type="button" name="update" value="<?= $Product->id; ?>"><i class="fa fa-pencil"></i></button> </a>
+                    <button class="form-control btn-danger" type="submit" name="delete" value="<?= $Product->id; ?>"><i class="fa fa-trash"></i></button> 
                 </form> 
-             
             </td> 
         </tr>
-      
-
     <?php } ?>
 
     </table>

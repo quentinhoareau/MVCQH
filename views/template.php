@@ -11,6 +11,12 @@
     <script src="assets/bootstrap-4.3.1/bootstrap.min.js"> </script>            <!-- Boostrap 4.3.1 -->  
     <link rel="stylesheet" href="assets/bootstrap-4.3.1/bootstrap.min.css">     <!-- Boostrap 4.3.1 -->
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
     <title> <?php echo $title  ?> </title>                                      <!-- Titre de l'onglet -->
 
     <link rel="stylesheet" href="assets/css/ailtech.css">                       <!-- Css Principal du site -->

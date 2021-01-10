@@ -25,17 +25,21 @@ class ProductManager extends Database{
     }
 
     //Mie à jours d'un product
-    public function update($id, $name, $email, $phone){
+    public function update($id, $name, $description, $categ_code){
         $this->getDB(); 
-        $query = "UPDATE product SET name=?, email=?, phone=? WHERE id=?";
-        $this->execQuery($query,[$name, $email, $phone, $id]);
+        $query = "UPDATE product SET name=?, description=?, categ_code=? WHERE id=?";
+        $this->execQuery($query,[$name, $description, $categ_code, $id]);
     }
 
     //Insertion d'un product
-    public function insert($name, $email, $phone){
+    public function add($name, $description, $categ_code){
         $this->getDB(); 
-        $query = "INSERT INTO product(name, email, phone) VALUES (?, ?, ?)";
-        $this->execQuery($query, [$name, $email, $phone]);
+        $query = "INSERT INTO product(name, description, categ_code) VALUES (?, ?, ?)";
+        $this->execQuery($query, [$name, $description, $categ_code]);
+
+        //Retourne l'identifiant de l'entité créée
+        $this->getDB();
+        return $this->getMaxIdTable("product", "code");
     }
 
 

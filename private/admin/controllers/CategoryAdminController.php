@@ -1,9 +1,10 @@
 <?php 
 
 class CategoryAdminController{
-   private $View;
-   public $message;
-   private $CategoryManager;
+   private  $View;
+   public   $message;
+   private  $CategoryManager;
+
    
    // CONSTRUCTEUR 
    public function __construct($url){
@@ -15,33 +16,53 @@ class CategoryAdminController{
         
          /*---------MANAGER---------*/
          $this->CategoryManager= new CategoryManager();
-         
+
          //Changement des path pour le BDD
          Database::setConfigPath("../config.ini");
          Database::setLoginPath("../admin_login.ini");
          /*------------------*/
 
-
-      
          /*---------FORMULAIRE---------*/
-         if( isset($_POST["deleteCategory"]) ){ //Si formulaire supprimé
+         //Action Supprimer
+         if( isset($_POST["deleteCategory"]) ){ 
             $this->CategoryManager->delete($_POST["deleteCategory"]);
+            header("Location: ".ADMIN_HOME."Category");
          }
-         if( isset($_POST["addCategory"]) ){ //Si formulaire ajouté
-            $this->CategoryManager->add($_POST["addCategory"]);
+         //Action Ajouter
+         if( isset($_POST["addCategory"]) ){ 
+            $idNewCategory = $this->CategoryManager->add($_POST['label']);
+            header("Location: ".ADMIN_HOME."category/update/".$idNewCategory);
          }
-         if( isset($_POST["updateCategory"]) ){ //Si formulaire modifié
-            $this->CategoryManager->update($_POST["updateCategory"], $_POST["label"]);
+         //Action modifier
+         if( isset($_POST["updateCategory"]) ){
+            $idCategory = $_POST["updateCategory"];
+            $this->CategoryManager->update($idCategory, $_POST['label']);
          }
          /*------------------*/
      
-         /*---------View---------*/
-         //Liste des produits
-   
-         $viewName= "Category";
-         $data= array(
-            "categoryList" => $this->CategoryManager->getList(), //Obtenir la liste des produits
-         );
+          /*---------View---------*/
+         //Vue Modifier
+         if( isset($url[1]) && $url[1] == "update"  && $url[2] >= 1 ){
+            $viewName= "CategoryForm";
+            $data= array(
+               "Category" => $this->CategoryManager->get($url[2]), //Obtenir la liste des produits
+            );
+         }
+         //Vue Ajouter
+         else if( isset($url[1]) && $url[1] == "add"){
+            $viewName= "CategoryForm";
+            $data= array(
+               "CategoryList" => $this->CategoryManager->getList()
+            );
+         }
+         //Vue Listing
+         else{
+            $viewName= "CategoryList";
+            $data= array(
+               "CategoryList" => $this->CategoryManager->getList(), //Obtenir la liste des produits
+            );
+         }
+        
 
          $this->View = new AdminView($viewName);
          $this->View->Popup->setMessage($this->message);
@@ -49,10 +70,6 @@ class CategoryAdminController{
          /*------------------*/
       }
    }
-
-   
-
-
    
 
 }
