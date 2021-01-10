@@ -30,7 +30,10 @@ class View{
 
    //SETTER
    public function setHeader($file){
-      $this->header = $file ;
+      if (file_exists($file)){
+         $this->header = $file ;
+      }else{throw new Exception('Le fichier '.$file.' est introuvable') ;}
+      
    }
 
    public function setScriptList($fileList){
@@ -38,7 +41,7 @@ class View{
       foreach ($fileList as $file) {
          if (file_exists($file)){
             $this->scriptList[] = $file;
-         }
+         }else{throw new Exception('Le fichier '.$file.' est introuvable') ;}
        }
 
    }
@@ -47,7 +50,7 @@ class View{
       foreach ($fileList as $file) {
          if (file_exists($file)){
             $this->cssList[] = $file;
-         }
+         }else{throw new Exception('Le fichier '.$file.' est introuvable') ;}
       }
    }
 
@@ -79,7 +82,7 @@ class View{
       //PARTIE DE LA VUE
       $content = $this->generateFile($this->file, $data);
  
-      //Charegements des files principaux
+      //Charegements des fichiers principaux
       $header =  $this->generateFile($this->header, $data);
       $footer= $this->generateFile($this->footer, $data);
       $nav= $this->generateFile($this->nav, $data);
