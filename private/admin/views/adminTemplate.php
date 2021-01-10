@@ -6,8 +6,11 @@
     <base href="<?= ADMIN_SERVER_FOLDER ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="assets/bootstrap-4.3.1/bootstrap.min.css">     <!-- Boostrap 4.3.1 -->
     <script src="assets/js/jquery.js"></script>                                 <!-- JQuery 3.4.0 -->
+    
+    <script src="assets/bootstrap-4.3.1/popper.min.js"></script>                <!-- Boostrap 4.3.1 -->  
+    <script src="assets/bootstrap-4.3.1/bootstrap.min.js"> </script>            <!-- Boostrap 4.3.1 -->  
+    <link rel="stylesheet" href="assets/bootstrap-4.3.1/bootstrap.min.css">     <!-- Boostrap 4.3.1 -->
 
     <title> <?php echo $title  ?> </title>                                      <!-- Titre de l'onglet -->
     <link rel="stylesheet" href="assets/css/admin/adminMvcqh.css">                       <!-- Css Principal du site -->
