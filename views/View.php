@@ -74,7 +74,7 @@ class View{
 
 
      //Génération de la vue
-     public function generateView($data){
+     public function generateView($data = array()){
      
       //PARTIE DE LA VUE
       $content = $this->generateFile($this->file, $data);

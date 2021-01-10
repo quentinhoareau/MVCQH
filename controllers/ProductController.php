@@ -25,11 +25,23 @@ class ProductController{
 
 
       /*-------------VUE------------*/
-      $this->View = new View("ProductInfo");
+
+      if( isset($url[1]) ){
+         $view = "ProductInfo" ;
+         $data = array(
+            "productInfo" => $this->ProductManager->get($url[1]) 
+         ) ;
+      }
+      else{
+         $view= "ProductList" ;
+         $data = array(
+            "productList" => $this->ProductManager->getList()
+         ) ;
+      }
+
+      $this->View = new View($view);
       $this->View->Popup->setMessage($this->message);
-      $this->View->generateView(array(
-         "productInfo" => $this->ProductManager->get($url[1]) 
-      ));
+      $this->View->generateView($data);
       /*----------------------------*/
     }
 

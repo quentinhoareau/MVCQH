@@ -7,16 +7,15 @@ class Popup{
     public $Message;
 
     
-
+   //Titre du popup (html)
    public function setTitle($valeur){
       $this->title = $valeur;
    }
 
-   //Html possible
+   //Contenu du popup (html)
    public function setMessage($valeur){
       $this->Message = $valeur;
    }
-
 
    public function genererVue(){
 

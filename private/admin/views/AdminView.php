@@ -22,7 +22,7 @@ class AdminView extends View{
         }
   
   
-       public function generateView($data){
+       public function generateView($data = array()){
        
         //PARTIE DE LA VUE
         $contenu = $this->generateFile($this->file, $data);

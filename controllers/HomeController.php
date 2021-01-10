@@ -25,11 +25,9 @@ class HomeController{
 
 
       /*-------------VUE------------*/
-      $this->View = new View("ProductList");
+      $this->View = new View("Home");
       $this->View->Popup->setMessage($this->message);
-      $this->View->generateView(array(
-         "productList" => $this->ProductManager->getList() 
-      ));
+      $this->View->generateView();
       /*----------------------------*/
     }
 
