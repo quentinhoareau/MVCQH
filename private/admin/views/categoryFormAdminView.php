@@ -26,8 +26,8 @@
             </tr>
 
             <tr>
-            <td>Action</td>
 
+            <td>Action</td>
             <td class="form-inline">
                 <?php if(isset($Category)){ ?>
                     <button class="form-control btn-info" type="button" name="consult" value="<?= $Category->code; ?>"><a href="../../category/<?= $Category->code; ?>"> <i class="fa fa-eye"></i> </a> </button> 

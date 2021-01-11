@@ -1,7 +1,7 @@
 <h1>Liste des produits</h1>
 
 <div class="card-group">
-    <?php foreach ($productList as $Product) { ?>
+    <?php foreach ($ProductList as $Product) { ?>
       <div class="col-sm-4">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="assets/img/catalog/default.jpg" alt="product<?= $Product->id ?>">
