@@ -24,7 +24,7 @@
     <script src="assets/DataTable/datatable.js"> </script>                      <!-- Script pour la librerie DataTable -->
     <link rel="stylesheet" href="assets/fontawesome/font-awesome.min.css">      <!-- Css pour les icones avec la librerie Fontawesome -->    
     
-    <?php 
+    <?php
         //Insertion de tous les liens css
         foreach ($cssList as $cssPath) { echo "<link rel='stylesheet' href='$cssPath'>" ; }
 
