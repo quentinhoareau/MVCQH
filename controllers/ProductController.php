@@ -13,7 +13,6 @@ class ProductController{
          throw new Exception(null, 404); //Erreur 404
       }
       else{
-        
          /*---------MANAGER---------*/
          $this->ProductManager= new ProductManager();
          $this->CategoryManager= new CategoryManager();
